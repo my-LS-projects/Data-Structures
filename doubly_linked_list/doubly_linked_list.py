@@ -11,6 +11,7 @@ class ListNode:
     """Wrap the given value in a ListNode and insert it
     after this node. Note that this node could already
     have a next node it is point to."""
+
     def insert_after(self, value):
         current_next = self.next
         self.next = ListNode(value, self, current_next)
@@ -20,6 +21,7 @@ class ListNode:
     """Wrap the given value in a ListNode and insert it
     before this node. Note that this node could already
     have a previous node it is point to."""
+
     def insert_before(self, value):
         current_prev = self.prev
         self.prev = ListNode(value, current_prev, self)
@@ -28,6 +30,7 @@ class ListNode:
 
     """Rearranges this ListNode's previous and next pointers
     accordingly, effectively deleting this ListNode."""
+
     def delete(self):
         if self.prev:
             self.prev.next = self.next
@@ -51,42 +54,76 @@ class DoublyLinkedList:
     """Wraps the given value in a ListNode and inserts it 
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
+
     def add_to_head(self, value):
-        pass
+        # create a node
+        # new_node = ListNode(value)
+        self.length += 1
+        if not self.head and not self.tail:
+            # Empty list, this is head and tail
+            # self.head = new_node
+            # self.tail = new_node
+            self.head = self.tail = ListNode(value)
+        else:
+            # if head and tail are not empty, what do we know?
+            # the list is populated
+            # we need to make this the head, but in an order where we don't lose anything
+            # assign next to the current head
+            # new_node.next = self.head
+            # assign the current head to have new node as its previous node
+            # self.head.prev = new_node
+            # reassign head to new node
+            self.head.insert_before(value)
+            self.head = self.head.prev
+
+        # What do we need to think about?
+        # What are scenarios?
+        # this needs to be head because we're adding to the head
+        # update previous head
+        # increase length
+        # if self.head === None, there is no list or tail
+        # if self.tail === None, new head becomes new tail as well
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
+
     def remove_from_head(self):
         pass
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
+
     def add_to_tail(self, value):
         pass
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
+
     def remove_from_tail(self):
         pass
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
+
     def move_to_front(self, node):
         pass
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
+
     def move_to_end(self, node):
         pass
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
+
     def delete(self, node):
         pass
-        
+
     """Returns the highest value currently in the list"""
+
     def get_max(self):
         pass

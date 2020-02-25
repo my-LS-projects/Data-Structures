@@ -1,3 +1,12 @@
+# LRU is Least Recently Used
+# it's a cache eviction policy
+# when we have a loose collection of items and we want to remove items in a certain order
+# similar to FIFO policy, or queue system. except we're using it for a cache
+# when size limit is met, must evict an item, this should be the least recently used item
+# if an item is accessed, it is moved to the front of the list
+# this makes it the last to be removed in the event of exceeding the limit
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -6,8 +15,9 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
+
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,6 +26,7 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
+
     def get(self, key):
         pass
 
@@ -29,5 +40,6 @@ class LRUCache:
     want to overwrite the old value associated with the key with
     the newly-specified value.
     """
+
     def set(self, key, value):
         pass

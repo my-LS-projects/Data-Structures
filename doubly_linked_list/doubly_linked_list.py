@@ -166,7 +166,7 @@ class DoublyLinkedList:
 
         max_val = self.head.value
         current_next = self.head
-        
+
         while current_next:
             if current_next.value > max_val:
                 max_val = current_next.value

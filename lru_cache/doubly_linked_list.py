@@ -57,13 +57,13 @@ class DoublyLinkedList:
 
     def add_to_head(self, value):
         # create a node
-        # new_node = ListNode(value)
+        new_node = ListNode(value)
         self.length += 1
         if not self.head and not self.tail:
             # Empty list, this is head and tail
             # self.head = new_node
             # self.tail = new_node
-            self.head = self.tail = ListNode(value)
+            self.head = self.tail = new_node
         else:
             # if head and tail are not empty, what do we know?
             # the list is populated
@@ -73,8 +73,12 @@ class DoublyLinkedList:
             # assign the current head to have new node as its previous node
             # self.head.prev = new_node
             # reassign head to new node
-            self.head.insert_before(value)
-            self.head = self.head.prev
+            # self.head.insert_before(value)
+            # self.head = self.head.prev
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        return new_node
 
         # What do we need to think about?
         # What are scenarios?

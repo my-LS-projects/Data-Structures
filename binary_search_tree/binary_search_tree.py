@@ -23,17 +23,17 @@ class BinarySearchTree:
             # if no node, add node
             # if great, look right
             # repeat steps
-            if value < current.value and current.left is not None:
+            if value <= current.value and current.left is not None:
                 current = current.left
-            elif value > current.value and current.right is not None:
+            elif value >= current.value and current.right is not None:
                 current = current.right
-            elif value < current.value and current.left is None:
+            elif value <= current.value and current.left is None:
                 # create new node
                 current.left = BinarySearchTree(value)
                 # assign to left node tree
                 new = current.left
                 break
-            elif value > current.value and current.right is None:
+            elif value >= current.value and current.right is None:
                 current.right = BinarySearchTree(value)
                 new = current.right
                 break
@@ -66,20 +66,27 @@ class BinarySearchTree:
     def get_max(self):
         # while you can go right, go right
         # return highest
-        current = self
-        while current.right is not None:
-            current = current.right
 
-        return current.value
+        # current = self
+        # while current.right is not None:
+        #     current = current.right
+
+        # return current.value
+
+        # RECURSIVE
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
         cb(self.value)
 
-        if self.left is not None:
+        if self.left:
             self.left.for_each(cb)
-        elif self.right is not None:
+        if self.right:
             self.right.for_each(cb)
 
     # DAY 2 Project -----------------------

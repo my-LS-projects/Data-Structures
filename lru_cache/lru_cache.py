@@ -51,24 +51,16 @@ class LRUCache:
 
     def set(self, key, value):
         if key in self.storage:
-            # if the key already exists, move to the front after reassigning
             self.storage[key].value = (key, value)
             self.dll.move_to_front(self.storage[key])
-            return self.storage[key].value[1]
+            return
 
         elif key not in self.storage:
             new_node = self.dll.add_to_head((key, value))
-            # if at capacity, remove from the end of the list (the oldest)
             self.storage[key] = new_node
             self.size += 1
 
             if self.size > self.limit:
                 self.size -= 1
                 old = self.dll.remove_from_tail()
-                # set the key in cache
-                # add to front
-                # delete the key in cache
                 del self.storage[old[0]]
-
-            return self.storage[key].value[1]
-
